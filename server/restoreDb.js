@@ -12,7 +12,7 @@ const restoreDb = async () => {
         host: MYSQL_HOST,
       });
 
-      await importer.import("./database.sql");
+      await importer.import("./GestaoEventos.sql");
 
       await importer.disconnect();
 };
