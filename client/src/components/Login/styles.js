@@ -7,12 +7,16 @@ export const Container = styled.div`
   justify-content: space-around;
   align-items: center;
 
-  span {
+  > span {
     font-weight: bolder;
   }
 
-  span: hover {
+  > span: hover {
     cursor: pointer;
+  }
+
+  > p {
+    text-align: center;
   }
 
   @media (min-width: 768px) {
@@ -22,7 +26,7 @@ export const Container = styled.div`
 `
 
 export const GeneralInfo = styled.div`
-  height: 70vh;
+  height: 50vh;
   width: 90vw;
   display: flex;
   flex-direction: column;
@@ -59,6 +63,6 @@ export const GeneralInfo = styled.div`
 
   @media (min-width: 768px) {
     width: 45vw;
-    height: 50vh;
+    height: 40vh;
   }
 `

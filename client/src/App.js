@@ -1,11 +1,12 @@
+import React from 'react';
 import './App.css'
 
-import Register from './components/Register';
+import PathRouter from './PathRouter';
 
 function App() {
   return (
     <>
-      <Register />
+      <PathRouter />
     </>
   )
 }

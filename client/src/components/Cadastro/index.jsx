@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import axios from 'axios';
+import Axios from 'axios';
 
 import { Container, GeneralInfo } from './styles';
 
@@ -9,31 +9,50 @@ function Cadastro({ setLogin }) {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [users, setUsers] = useState([]);
+  const [verifyUserRegister, setVerifyUserRegister] = useState(null)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const userData = {
-        fullname: `${name} ${lastName}`.trim(),
-        email: email.trim(),
-        password: password.trim()
+      const data = {
+        id: 2,
+        full_name: `${name} ${lastName}`,
+        user_email: email,
+        user_password: password,
+      }
+
+      let headers = {
+        headers: {
+            'Accept': 'application/json',
+        }
       };
 
-      axios
-        .post('https://localhost:3001/user', JSON.stringify(userData))
-        .then((response) => {
-          console.log(response);
-          console.log(response.status);
-        });
+      const isUserRegistered = users.data.find((user) => {
+        return user.user_email === email
+      })
+
+      console.log(isUserRegistered)
+
+      !isUserRegistered ?
+      Axios.post('http://localhost:8080/users', data, headers)
+      .then((response) => response) : setVerifyUserRegister('Usuário já cadastrado!');
+
     } catch (error) {
-      console.log('error = ' + JSON.stringify(error.response));
+      console.log("error = " + error)
+      console.log(error.response.data.errors);
     }
   };
 
+  useEffect(() => {
+    Axios.get('http://localhost:8080/users')
+    .then((response) => setUsers(response))
+  });
+
   return (
     <Container>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} >
         <GeneralInfo>
           {/* Cadastro */}
           <h2>Cadastro</h2>
@@ -43,6 +62,7 @@ function Cadastro({ setLogin }) {
             placeholder="Primeiro nome"
             value={name}
             onChange={({ target }) => setName(target.value)}
+            required
           />
           {/* sobrenome */}
           <input
@@ -50,6 +70,7 @@ function Cadastro({ setLogin }) {
             placeholder="Sobrenome"
             value={lastName}
             onChange={({ target }) => setLastName(target.value)}
+            required
           />
           {/* e-mail */}
           <input
@@ -57,6 +78,7 @@ function Cadastro({ setLogin }) {
             placeholder="E-mail"
             value={email}
             onChange={({ target }) => setEmail(target.value)}
+            required
           />
           {/* senha */}
           <input
@@ -64,6 +86,7 @@ function Cadastro({ setLogin }) {
             placeholder="Senha"
             value={password}
             onChange={({ target }) => setPassword(target.value)}
+            required
           />
           {/* Cadastro */}
           <p>
@@ -75,6 +98,9 @@ function Cadastro({ setLogin }) {
           Já possui uma conta? <span onClick={() => setLogin(true)}>Faça Login</span>
         </p>
       </form>
+      {
+        verifyUserRegister && <p>{verifyUserRegister}</p>
+      }
     </Container>
   );
 }

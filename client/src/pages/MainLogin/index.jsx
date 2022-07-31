@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 
-import { Container, BoxButton } from './styles'
+import { Container, BoxButton, Main } from './styles'
 
-import Cadastro from './Cadastro'
-import Login from './Login'
+import Cadastro from '../../components/Cadastro'
+import Login from '../../components/Login'
 
-function Register() {
+function MainLogin() {
   const [login, setLogin] = useState(true)
   return (
     <Container>
+      <Main>
       <BoxButton>
         <button type="button" onClick={() => setLogin(true)}>
           Login
@@ -19,8 +20,9 @@ function Register() {
         </button>
       </BoxButton>
       <div>{login ? <Login setLogin={setLogin} /> : <Cadastro setLogin={setLogin} />}</div>
+      </Main>
     </Container>
   )
 }
 
-export default Register
+export default MainLogin;

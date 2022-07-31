@@ -15,6 +15,10 @@ export const Container = styled.div`
     cursor: pointer;
   }
 
+  > p {
+    text-align: center;
+  }
+
   @media (min-width: 768px) {
     width: 50vw;
     height: 60vh;
@@ -22,7 +26,7 @@ export const Container = styled.div`
 `
 
 export const GeneralInfo = styled.div`
-  height: 50vh;
+  height: 70vh;
   width: 90vw;
   display: flex;
   flex-direction: column;
@@ -59,6 +63,6 @@ export const GeneralInfo = styled.div`
 
   @media (min-width: 768px) {
     width: 45vw;
-    height: 40vh;
+    height: 50vh;
   }
 `
