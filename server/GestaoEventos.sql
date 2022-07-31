@@ -1,6 +1,8 @@
-CREATE DATABASE IF NOT EXISTS gestao_eventos;
+DROP DATABASE IF EXISTS GestaoEventos;
 
-USE gestao_eventos;
+CREATE DATABASE GestaoEventos;
+
+USE GestaoEventos;
 
 CREATE TABLE users
 (
