@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const DEFAULT_TIMEOUT = 30000;
-class CharactersService {
+class UsersService {
   constructor({ url = 'http://localhost:3000', timeout = DEFAULT_TIMEOUT }) {
     this.http = axios.create({
       baseURL: url,
@@ -9,15 +9,15 @@ class CharactersService {
     });
   }
 
-  async getCharacters(name, page, size) {
+  async getCharacters(fullname, email, password) {
     const params = {
-      page,
-      size,
-      name,
+      fullname,
+      email,
+      password,
     };
 
     return this.http.get('/', { params });
   }
 }
 
-export default CharactersService;
+export default UsersService;
