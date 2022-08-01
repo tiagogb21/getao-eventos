@@ -13,7 +13,7 @@ CREATE TABLE users
 	PRIMARY KEY(id)
 );
 
-INSERT INTO users (full_name, user_email, user_password);
+INSERT INTO users (full_name, user_email, user_password)
 
 VALUES ('admin', 'admin@admin.com', 'admin');
 
@@ -26,18 +26,40 @@ CREATE TABLE eventos
 	PRIMARY KEY(id)
 );
 
-INSERT INTO eventos (cidade, estado, tipo);
+INSERT INTO eventos (cidade, estado, tipo)
 
-VALUES ('sao paulo', 'sao paulo', 'musica');
+VALUES
+  -- empresas e universidades
+  -- Seminário
+  ('Sao Paulo', 'Sao Paulo', 'Seminário'),
+  ('Belo Horizonte', 'Minas Gerais', 'Seminário'),
+  ('Vitoria', 'Espirito Santo', 'Seminário'),
+  ('Rio de Janeiro', 'Rio de Janeiro', 'Seminário'),
+  ('Curitiba', 'Paraná', 'Seminário'),
+  ('Porto Alegre', 'Rio Grande do Sul', 'Seminário'),
+  -- Palestra
+  ('Sao Paulo', 'Sao Paulo', 'Palestra'),
+  ('Belo Horizonte', 'Minas Gerais', 'Palestra'),
+  ('Vitoria', 'Espirito Santo', 'Palestra'),
+  ('Rio de Janeiro', 'Rio de Janeiro', 'Palestra'),
+  ('Curitiba', 'Paraná', 'Palestra'),
+  ('Porto Alegre', 'Rio Grande do Sul', 'Palestra'),
+  -- Curso
+  ('Sao Paulo', 'Sao Paulo', 'Curso'),
+  ('Belo Horizonte', 'Minas Gerais', 'Curso'),
+  ('Vitoria', 'Espirito Santo', 'Curso'),
+  ('Rio de Janeiro', 'Rio de Janeiro', 'Curso'),
+  ('Curitiba', 'Paraná', 'Curso'),
+  ('Porto Alegre', 'Rio Grande do Sul', 'Curso')
+;
 
 CREATE TABLE pagamentos
 (
 	id INT NOT NULL AUTO_INCREMENT,
 	qtd_ingresso INT NOT NULL,
-  birthday DATE,
 	PRIMARY KEY(id)
 );
 
-INSERT INTO pagamentos (qtd_ingresso);
+INSERT INTO pagamentos (qtd_ingresso)
 
 VALUES (0);
