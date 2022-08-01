@@ -1,26 +1,29 @@
-const UserView = require("../views/user.view");
+const EventosView = require("../views/eventos.view");
 
 const getAll = async (req, res) => {
   try {
-    const users = await UserView.getAll();
-    return res.status(200).json(users);
+    const eventos = await EventosView.getAll();
+    return res.status(200).json(eventos);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
 };
 
-const createUser = async (req, res) => {
+const createEventos = async (req, res) => {
   try {
-    const { full_name, user_email, user_password } = req.body;
-    const users = await UserView.createUser(
-      full_name,
-      user_email,
-      user_password
+    const { cidade, estado, evento, tipo, turno, preco } = req.body;
+    const eventos = await EventosView.createEventos(
+      cidade,
+      estado,
+      evento,
+      tipo,
+      turno,
+      preco
     );
-    return res.status(200).json(users);
+    return res.status(200).json(eventos);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
 };
 
-module.exports = { getAll, createUser };
+module.exports = { getAll, createEventos };
