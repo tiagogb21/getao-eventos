@@ -136,4 +136,11 @@ table {
   --gr-font: #948e99;
   --gr-bg: #eae3d1;
   --white: #ffffff;
+  --black: #000000;
+}
+
+textarea:focus,
+input:focus {
+  box-shadow: 0 0 0 0;
+  outline: 0;
 }

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Container = styled.div`
   height: 90vh;
@@ -11,7 +11,7 @@ export const Container = styled.div`
     font-weight: bolder;
   }
 
-  > span: hover {
+  >span: hover {
     cursor: pointer;
   }
 
@@ -23,7 +23,7 @@ export const Container = styled.div`
     width: 50vw;
     height: 60vh;
   }
-`
+`;
 
 export const GeneralInfo = styled.div`
   height: 50vh;
@@ -65,4 +65,4 @@ export const GeneralInfo = styled.div`
     width: 45vw;
     height: 40vh;
   }
-`
+`;

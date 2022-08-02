@@ -1,20 +1,37 @@
-import React from 'react'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { Container } from './styles'
+import { Container, Head } from './styles';
 
 function Header() {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/login');
+  };
+
   return (
     <Container>
       {/* Logo */}
-      <h2>Eventos</h2>
+      <Head>
+        <h2>
+          <span className="G">G</span>
+          <span className="E">E</span>
+          Eventos
+        </h2>
+        <button type="button" onClick={() => handleClick()}>
+          Login
+        </button>
+      </Head>
       {/* Input */}
-      <input type="text" />
+      <label htmlFor="">
+        <input type="text" placeholder="Pesquise um evento" />
+      </label>
       {/* Indicação */}
 
       {/* Login */}
-      <button type="button">Login</button>
     </Container>
-  )
+  );
 }
 
-export default Header
+export default Header;
