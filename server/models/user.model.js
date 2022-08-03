@@ -14,8 +14,7 @@ const getById = async (id) => {
 
 const createUser = async (full_name, user_email, user_password) => {
   const users = await getAll();
-  console.log(users);
-  const userExists = users.some((user) => user.full_name === full_name);
+  const userExists = users.some((user) => user.user_email === user_email);
   if (userExists) return;
   const query =
     "INSERT INTO GestaoEventos.users (full_name, user_email, user_password) VALUES (?, ?, ?)";
