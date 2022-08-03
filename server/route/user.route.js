@@ -11,7 +11,9 @@ const {
 const router = express.Router();
 
 router.get("/users", UserController.getAll);
+
 router.get("/users/:id", UserController.getById);
+
 router.post(
   "/users",
   verifyFullName,
@@ -19,6 +21,7 @@ router.post(
   verifyPassword,
   UserController.createUser
 );
+
 router.put(
   "/users/:id",
   verifyFullName,
@@ -26,6 +29,7 @@ router.put(
   verifyPassword,
   UserController.updateUser
 );
+
 router.delete("/users/:id", UserController.deleteUser);
 
 module.exports = router;

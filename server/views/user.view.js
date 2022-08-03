@@ -21,6 +21,7 @@ const createUser = async (full_name, user_email, user_password) => {
 
 const updateUser = async (id, full_name, user_email, user_password) => {
   const users = await UserModel.updateUser(
+    id,
     full_name,
     user_email,
     user_password

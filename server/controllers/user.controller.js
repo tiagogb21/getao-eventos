@@ -29,7 +29,6 @@ const createUser = async (req, res) => {
       user_email,
       user_password
     );
-    console.log(users);
     if (!users) {
       return res.status(404).json({ message: "User already exists!" });
     }
@@ -42,7 +41,13 @@ const createUser = async (req, res) => {
 const updateUser = async (req, res) => {
   try {
     const { id } = req.params;
-    const user = await UserView.getById(id);
+    const { full_name, user_email, user_password } = req.body;
+    const user = await UserView.updateUser(
+      id,
+      full_name,
+      user_email,
+      user_password
+    );
     if (user.length === 0)
       return res.status(404).json({ message: "User not found!" });
     return res.status(200).json(user);

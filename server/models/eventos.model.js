@@ -34,4 +34,24 @@ const createEvento = async (cidade, estado, evento, tipo, turno, preco) => {
   };
 };
 
-module.exports = { getAll, createEvento };
+const updateEvento = async (id, cidade, estado, evento, tipo, turno, preco) => {
+  const query =
+    "UPDATE GestaoEventos.users SET cidade = ?, estado = ?, evento = ?, tipo = ?, turno = ?, preco = ? WHERE id = ?";
+  await connection.execute(query, [cidade, estado, evento, tipo, turno, preco]);
+  return {
+    cidade,
+    estado,
+    evento,
+    tipo,
+    turno,
+    preco,
+  };
+};
+
+const deleteEvento = async (id) => {
+  const query = "DELETE FROM GestaoEventos.eventos WHERE id = ?";
+  const delEvento = await connection.execute(query, [id]);
+  return delEvento;
+};
+
+module.exports = { getAll, getById, createEvento, updateEvento, deleteEvento };
