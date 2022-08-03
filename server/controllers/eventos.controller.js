@@ -42,7 +42,8 @@ const updateEvento = async (req, res) => {
   try {
     const { id } = req.params;
     const { cidade, estado, evento, tipo, turno, preco } = req.body;
-    const evento = await EventosView.updateEvento(
+    const eventoUpdate = await EventosView.updateEvento(
+      id,
       cidade,
       estado,
       evento,
@@ -50,7 +51,7 @@ const updateEvento = async (req, res) => {
       turno,
       preco
     );
-    if (evento.length === 0)
+    if (eventoUpdate.length === 0)
       return res.status(404).json({ message: "Event not found!" });
     return res.status(200).json({ message: "Updated event!" });
   } catch (error) {

@@ -37,7 +37,15 @@ const createEvento = async (cidade, estado, evento, tipo, turno, preco) => {
 const updateEvento = async (id, cidade, estado, evento, tipo, turno, preco) => {
   const query =
     "UPDATE GestaoEventos.eventos SET cidade = ?, estado = ?, evento = ?, tipo = ?, turno = ?, preco = ? WHERE id = ?";
-  await connection.execute(query, [cidade, estado, evento, tipo, turno, preco]);
+  await connection.execute(query, [
+    cidade,
+    estado,
+    evento,
+    tipo,
+    turno,
+    preco,
+    id,
+  ]);
   return {
     cidade,
     estado,

@@ -24,6 +24,7 @@ const createEvento = async (cidade, estado, evento, tipo, turno, preco) => {
 
 const updateEvento = async (id, cidade, estado, evento, tipo, turno, preco) => {
   const eventos = await EventosModel.updateEvento(
+    id,
     cidade,
     estado,
     evento,
