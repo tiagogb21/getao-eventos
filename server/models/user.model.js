@@ -8,11 +8,15 @@ const getAll = async () => {
 
 const getById = async (id) => {
   const query = "SELECT * FROM GestaoEventos.users WHERE id = ?";
-  const [users] = await connection.execute(query, id);
+  const [users] = await connection.execute(query, [id]);
   return users;
 };
 
 const createUser = async (full_name, user_email, user_password) => {
+  const users = await getAll();
+  console.log(users);
+  const userExists = users.some((user) => user.full_name === full_name);
+  if (userExists) return;
   const query =
     "INSERT INTO GestaoEventos.users (full_name, user_email, user_password) VALUES (?, ?, ?)";
   const [{ insertId: id }] = await connection.execute(query, [
@@ -40,4 +44,10 @@ const updateUser = async (id, full_name, user_email, user_password) => {
   };
 };
 
-module.exports = { getAll, createUser, updateUser };
+const deleteUser = async (id) => {
+  const query = "DELETE FROM GestaoEventos.users WHERE id = ?";
+  const delUser = await connection.execute(query, [id]);
+  return delUser;
+};
+
+module.exports = { getAll, getById, createUser, updateUser, deleteUser };

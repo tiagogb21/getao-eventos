@@ -5,8 +5,8 @@ const getAll = async () => {
   return users;
 };
 
-const getById = async () => {
-  const user = await UserModel.getById();
+const getById = async (id) => {
+  const user = await UserModel.getById(id);
   return user;
 };
 
@@ -16,6 +16,20 @@ const createUser = async (full_name, user_email, user_password) => {
     user_email,
     user_password
   );
+  return users;
+};
+
+const updateUser = async (id, full_name, user_email, user_password) => {
+  const users = await UserModel.updateUser(
+    full_name,
+    user_email,
+    user_password
+  );
+  return users;
+};
+
+const deleteUser = async (id) => {
+  const users = await UserModel.deleteUser(id);
   return users;
 };
 
