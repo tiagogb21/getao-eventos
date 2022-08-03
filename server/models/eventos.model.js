@@ -1,8 +1,14 @@
 const connection = require("./connection");
 
 const getAll = async () => {
-  const query = "SELECT * FROM GestaoEventos.eventos;";
+  const query = "SELECT * FROM GestaoEventos.eventos";
   const [eventos] = await connection.execute(query);
+  return eventos;
+};
+
+const getById = async (id) => {
+  const query = "SELECT * FROM GestaoEventos.eventos WHERE id=?";
+  const [eventos] = await connection.execute(query, [id]);
   return eventos;
 };
 
