@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
 
 export const Container = styled.div`
   height: 200px;
@@ -13,7 +14,7 @@ export const Container = styled.div`
   input {
     width: 80vw;
     padding: 10px;
-    background: var(--bl-btn);
+    background: var(--wht-bg);
     border: none;
     border-radius: 5px;
   }
@@ -22,16 +23,34 @@ export const Container = styled.div`
     color: var(--gr-font);
   }
 
+  .btn-cart {
+    background: inherit;
+    border: none;
+    color: var(--white);
+  }
+
+  .btn-cart:hover {
+    cursor: pointer;
+  }
+
+  .btn-cart > span {
+    height: 20px;
+    width: 20px;
+    background: var(--white);
+    border-radius: 50%;
+    color: black;
+  }
+
   @media (min-width: 768px) {
     padding-top: 45px;
 
     height: 150px;
 
     input {
-      width: 50vw;
+      width: 40vw;
       position: relative;
       bottom: 50px;
-      left: 30px;
+      left: -20px;
     }
   }
 `;

@@ -16,8 +16,6 @@ function Login({ setLogin }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log('a');
-
     try {
       let headers = {
         headers: {
@@ -25,9 +23,7 @@ function Login({ setLogin }) {
         }
       };
 
-      Axios.get('http://localhost:8080/users', headers).then((response) =>
-        console.log(response)
-      );
+      Axios.get('http://localhost:8080/users', headers).then((response) => response);
     } catch (error) {
       console.log('error = ' + error);
       console.log(error.response.data.errors);

@@ -1,4 +1,5 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
+import city from '../../assets/city.jpg';
 
 export const Container = styled.div`
   width: 100vw;
@@ -7,7 +8,8 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`
+  background-image: linear-gradient(145deg, var(--prp-btn), blue);
+`;
 
 export const Main = styled.div`
   width: 100vw;
@@ -18,13 +20,14 @@ export const Main = styled.div`
   align-items: center;
   border-radius: 6px;
   padding: 30px 0;
+  background: #f5f5f5;
 
   @media (min-width: 768px) {
     width: 50vw;
     height: 80vh;
     border: 1px solid black;
   }
-`
+`;
 export const BoxButton = styled.div`
   display: flex;
   justify-content: space-around;
@@ -35,7 +38,7 @@ export const BoxButton = styled.div`
     background: var(--bl-btn);
     border: none;
     border-radius: 6px;
-    color: var(--gr-font);
+    color: var(--white);
     padding: 10px;
     font-weight: bolder;
   }
@@ -54,4 +57,4 @@ export const BoxButton = styled.div`
       opacity: 1;
     }
   }
-`
+`;

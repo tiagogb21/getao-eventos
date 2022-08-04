@@ -1,6 +1,8 @@
 import React from 'react';
+import { useContext } from 'react';
 
 import { Link } from 'react-router-dom';
+import MyContext from '../../MyContext';
 
 import {
   ClosePage,
@@ -9,10 +11,12 @@ import {
   DeleteBtn,
   SelectProducts,
   BoxEmptyCart,
-  EmptyCart,
+  EmptyCart
 } from './styles';
 
 function ShoppingCart() {
+  const { shoppingCart } = useContext(MyContext);
+
   return (
     <Container>
       <HeaderBox>
@@ -29,15 +33,22 @@ function ShoppingCart() {
             <tr>
               <th>Nome</th>
               <th>Preço</th>
+              <th>Quantidade</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>a</td>
-              <td>1</td>
-              <td className="dlt-btn"><DeleteBtn /> delete</td>
-            </tr>
+            {shoppingCart !== undefined &&
+              shoppingCart.map((item) => (
+                <tr>
+                  <td>{item.nome}</td>
+                  <td>{item.preco}</td>
+                  <td>{item.quantidade}</td>
+                  <td className="dlt-btn">
+                    <DeleteBtn /> delete
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
         {/* Total */}

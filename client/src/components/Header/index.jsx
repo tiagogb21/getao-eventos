@@ -1,31 +1,58 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import MyContext from '../../MyContext';
 
-import { Container, Head } from './styles';
+import { Container, Head, CartIcon } from './styles';
 
 function Header() {
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    navigate('/login');
+  const [inputSearch, setInputSearch] = useState('');
+
+  const handleClick = (path) => {
+    navigate(path);
   };
+
+  const { filterByEvents, shoppingCart } = useContext(MyContext);
+
+  const handleChange = (value) => {
+    setInputSearch(value);
+    return filterByEvents(value);
+  };
+
+  useEffect(() => {
+    handleChange(inputSearch);
+  }, [inputSearch]);
 
   return (
     <Container>
       {/* Logo */}
       <Head>
-        <h2>
+        <h2 onClick={() => handleClick('/')}>
           <span className="G">G</span>
           <span className="E">E</span>
           Eventos
         </h2>
-        <button type="button" onClick={() => handleClick()}>
-          Login
-        </button>
+        <article>
+          <button type="button" onClick={() => handleClick('/login')}>
+            Login
+          </button>
+          <button className="btn-cart" type="button">
+            <CartIcon />
+            <span>{shoppingCart.length}</span>
+          </button>
+        </article>
       </Head>
       {/* Input */}
       <label htmlFor="">
-        <input type="text" placeholder="Pesquise um evento" />
+        <input
+          type="text"
+          placeholder="Pesquise um evento"
+          value={inputSearch}
+          onChange={({ target }) => {
+            setInputSearch(target.value);
+          }}
+        />
       </label>
       {/* Indicação */}
 

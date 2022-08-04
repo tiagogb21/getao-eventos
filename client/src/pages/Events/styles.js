@@ -1,57 +1,61 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  .dest-ttl {
-    font-size: 25px;
+  h1 {
+    font-size: 50px;
     font-weight: bolder;
     margin-top: 50px;
   }
-
-  @media (min-width: 768px) {
-    .dest-ttl {
-      margin-top: 20px;
-      font-size: 50px;
-    }
-  }
 `;
 
-export const Destaque = styled.div`
+export const BoxContainer = styled.div`
   width: 100%;
-  height: 700px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
 
+  button {
+    border: none;
+  }
+
   @media (min-width: 768px) {
-    flex-direction: row;
-    height: 500px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    justify-items: center;
+    height: 900px;
   }
 `;
 
-export const BoxEv = styled.div`
+export const BoxEvent = styled.div`
+  width: 70%;
+  height: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  justify-content: space-around;
   -webkit-box-shadow: 5px 5px 15px 5px #000000;
   -moz-box-shadow: 5px 5px 15px 5px #000000;
   box-shadow: 5px 5px 15px 5px #000000;
+  margin: 50px 0;
+  padding: 20px;
 
-  > img {
-    width: 150px;
-    border-radius: 10px;
-    margin-bottom: 20px;
+  img {
+    width: 60%;
+    border-radius: 20px;
+    margin: 30px 0;
   }
 
   p {
+    font-size: 20px;
+  }
+
+  p > span {
     font-weight: bolder;
-    text-transform: uppercase;
   }
 
   &:hover {
@@ -64,8 +68,6 @@ export const BoxEv = styled.div`
   }
 
   @media (min-width: 768px) {
-    img {
-      width: 300px;
-    }
+    width: 300px;
   }
 `;

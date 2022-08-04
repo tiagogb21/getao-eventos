@@ -138,7 +138,6 @@ function Admin() {
             type="file"
             accept="image/*"
             onChange={({ target }) => {
-              console.log(target.files);
               setImage(target);
             }}
           />
