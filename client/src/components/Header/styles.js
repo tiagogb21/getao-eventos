@@ -92,6 +92,10 @@ export const Head = styled.div`
     font-size: 25px;
   }
 
+  > h2:hover {
+    cursor: pointer;
+  }
+
   button {
     width: 150px;
     border: none;

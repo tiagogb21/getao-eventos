@@ -54,7 +54,6 @@ function EventsDetails() {
                       return acc;
                     }, []);
                   }
-                  console.log(prevState);
                   return prevState;
                 });
               }}

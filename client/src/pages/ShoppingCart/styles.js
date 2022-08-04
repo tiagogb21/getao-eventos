@@ -58,7 +58,8 @@ export const SelectProducts = styled.div`
     width: 90%;
   }
 
-  > th, td {
+  > th,
+  td {
     text-align: center;
   }
 
@@ -73,7 +74,7 @@ export const SelectProducts = styled.div`
   th {
     padding-top: 12px;
     padding-bottom: 12px;
-    background-color: #04AA6D;
+    background-color: #04aa6d;
     color: white;
   }
 
@@ -88,7 +89,7 @@ export const SelectProducts = styled.div`
   }
 `;
 
-export const BoxEmptyCart = styled.div`
+export const BoxEmptyCart = styled.button`
   display: flex;
   width: 40%;
   border: 1px solid black;

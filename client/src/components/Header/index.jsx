@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import MyContext from '../../MyContext';
 
 import { Container, Head, CartIcon } from './styles';
@@ -19,6 +19,8 @@ function Header() {
     setInputSearch(value);
     return filterByEvents(value);
   };
+
+  const location = useLocation();
 
   useEffect(() => {
     handleChange(inputSearch);
@@ -44,16 +46,18 @@ function Header() {
         </article>
       </Head>
       {/* Input */}
-      <label htmlFor="">
-        <input
-          type="text"
-          placeholder="Pesquise um evento"
-          value={inputSearch}
-          onChange={({ target }) => {
-            setInputSearch(target.value);
-          }}
-        />
-      </label>
+      {location.pathname !== '/' && (
+        <label htmlFor="">
+          <input
+            type="text"
+            placeholder="Pesquise um evento"
+            value={inputSearch}
+            onChange={({ target }) => {
+              setInputSearch(target.value);
+            }}
+          />
+        </label>
+      )}
       {/* Indicação */}
 
       {/* Login */}

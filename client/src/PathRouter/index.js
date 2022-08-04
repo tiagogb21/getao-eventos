@@ -12,12 +12,12 @@ function PathRouter() {
     <Router>
       <Routes>
         <Route exact path="/" element={<Home />} />
+        <Route exact path="/home" element={<Home />} />
         <Route path="/login" element={<MainLogin />} />
         <Route path="/cart" element={<ShoppingCart />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/events/:id" element={<Events />} />
         <Route path="/events/details/:id" element={<EventsDetails />} />
-        <Route path="/cart" element={<ShoppingCart />} />
       </Routes>
     </Router>
   );

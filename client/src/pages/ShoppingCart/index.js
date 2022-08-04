@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useState } from 'react';
 import { useContext } from 'react';
 
 import { Link } from 'react-router-dom';
@@ -15,7 +16,50 @@ import {
 } from './styles';
 
 function ShoppingCart() {
-  const { shoppingCart } = useContext(MyContext);
+  const { shoppingCart, setShoppingCart } = useContext(MyContext);
+
+  const [total, setTotal] = useState(0);
+
+  const increaseQuantity = (name) => {
+    const newQuantity = shoppingCart.map((item) => {
+      if (item.nome === name) {
+        item.quantidade += 1;
+      }
+      return item;
+    });
+    calculateTotalPrice();
+    return setShoppingCart(newQuantity);
+  };
+
+  const decreaseQuantity = (name) => {
+    const newQuantity = shoppingCart.map((item) => {
+      if (item.nome === name && item.quantidade >= 1) {
+        item.quantidade -= 1;
+      }
+      return item;
+    });
+    calculateTotalPrice();
+    return setShoppingCart(newQuantity);
+  };
+
+  const calculateTotalPrice = () => {
+    const totalPrice = shoppingCart.reduce((acc, curr) => {
+      acc += curr.preco * curr.quantidade;
+      return acc;
+    }, 0);
+    return setTotal(totalPrice);
+  };
+
+  const deleteOne = (nome) => {
+    const filterAndDelete = shoppingCart.filter((item) => item.nome !== nome);
+    setShoppingCart(filterAndDelete);
+    calculateTotalPrice();
+    return;
+  };
+
+  useEffect(() => {
+    calculateTotalPrice();
+  }, []);
 
   return (
     <Container>
@@ -43,17 +87,30 @@ function ShoppingCart() {
                 <tr>
                   <td>{item.nome}</td>
                   <td>{item.preco}</td>
-                  <td>{item.quantidade}</td>
+                  <td>
+                    <button onClick={() => decreaseQuantity(item.nome)}>-</button>
+                    {item.quantidade}
+                    <button onClick={() => increaseQuantity(item.nome)}>+</button>
+                  </td>
                   <td className="dlt-btn">
-                    <DeleteBtn /> delete
+                    <button type="button" onClick={() => deleteOne(item.nome)}>
+                      <DeleteBtn /> delete
+                    </button>
                   </td>
                 </tr>
               ))}
           </tbody>
         </table>
         {/* Total */}
+        <p>Total: {total}</p>
         {/* Limpar Carrinho */}
-        <BoxEmptyCart>
+        <BoxEmptyCart
+          type="button"
+          onClick={() => {
+            setTotal(0);
+            setShoppingCart([]);
+          }}
+        >
           Limpar Carrinho
           <EmptyCart />
         </BoxEmptyCart>
