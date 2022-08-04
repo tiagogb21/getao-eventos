@@ -12,7 +12,9 @@ import {
   DeleteBtn,
   SelectProducts,
   BoxEmptyCart,
-  EmptyCart
+  BoxPostCart,
+  EmptyCart,
+  ConfirmBtn
 } from './styles';
 
 function ShoppingCart() {
@@ -89,7 +91,7 @@ function ShoppingCart() {
                   <td>{item.preco}</td>
                   <td>
                     <button onClick={() => decreaseQuantity(item.nome)}>-</button>
-                    {item.quantidade}
+                    <span className="sp-qtd"> {item.quantidade} </span>
                     <button onClick={() => increaseQuantity(item.nome)}>+</button>
                   </td>
                   <td className="dlt-btn">
@@ -102,18 +104,33 @@ function ShoppingCart() {
           </tbody>
         </table>
         {/* Total */}
-        <p>Total: {total}</p>
+        <p className="p-ttl">
+          Total:
+          {total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+        </p>
         {/* Limpar Carrinho */}
-        <BoxEmptyCart
-          type="button"
-          onClick={() => {
-            setTotal(0);
-            setShoppingCart([]);
-          }}
-        >
-          Limpar Carrinho
-          <EmptyCart />
-        </BoxEmptyCart>
+        <article>
+          <BoxEmptyCart
+            type="button"
+            onClick={() => {
+              setTotal(0);
+              setShoppingCart([]);
+            }}
+          >
+            Limpar Carrinho
+            <EmptyCart />
+          </BoxEmptyCart>
+          <BoxPostCart
+            type="button"
+            onClick={() => {
+              setTotal(0);
+              setShoppingCart([]);
+            }}
+          >
+            confirmar
+            <ConfirmBtn />
+          </BoxPostCart>
+        </article>
       </SelectProducts>
       {/* Finalizar Compra */}
     </Container>

@@ -46,7 +46,7 @@ function Header() {
         </article>
       </Head>
       {/* Input */}
-      {location.pathname !== '/' && (
+      {location.pathname !== '/' && !location.pathname.includes('details') && (
         <label htmlFor="">
           <input
             type="text"

@@ -148,4 +148,5 @@ input:focus {
 
 body {
   background: var(--wht-bg);
+  font-family: Arial, Helvetica, sans-serif;
 }

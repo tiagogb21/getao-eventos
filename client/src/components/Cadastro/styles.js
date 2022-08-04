@@ -15,7 +15,7 @@ export const Container = styled.div`
     cursor: pointer;
   }
 
-  > p {
+  p {
     text-align: center;
   }
 

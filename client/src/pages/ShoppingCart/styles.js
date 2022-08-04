@@ -1,15 +1,31 @@
 import styled from 'styled-components';
 
-import { BsFillCartXFill } from 'react-icons/bs';
+import { BsFillCartXFill, BsCartCheck } from 'react-icons/bs';
 import { MdDelete } from 'react-icons/md';
 import { RiCloseCircleLine } from 'react-icons/ri';
 
 export const Container = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  article {
+    height: 20vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @media (min-width: 768px) {
+    article {
+      flex-direction: row;
+      justify-content: space-around;
+    }
+  }
 `;
 
 export const HeaderBox = styled.div`
@@ -63,14 +79,6 @@ export const SelectProducts = styled.div`
     text-align: center;
   }
 
-  > tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-
-  > tr:hover {
-    background-color: #ddd;
-  }
-
   th {
     padding-top: 12px;
     padding-bottom: 12px;
@@ -79,22 +87,60 @@ export const SelectProducts = styled.div`
   }
 
   .dlt-btn {
-    background: green;
+    background: blue;
     color: white;
     width: 20%;
+  }
+
+  .dlt-btn > button {
+    background: inherit;
+    border: none;
   }
 
   .dlt-btn:hover {
     background: red;
   }
+
+  .p-ttl {
+    margin: 40px 0;
+  }
+
+  .sp-qtd {
+    margin: 0 10px;
+  }
 `;
 
-export const BoxEmptyCart = styled.button`
-  display: flex;
-  width: 40%;
+export const BoxPostCart = styled.button`
+  width: 50%;
   border: 1px solid black;
   padding: 10px;
   border-radius: 6px;
+  text-transform: uppercase;
+  background: green;
+  color: var(--white);
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+    color: white;
+    background: green;
+    border: 1px solid white;
+  }
+
+  @media (min-width: 768px) {
+    width: 30%;
+  }
+`;
+
+export const BoxEmptyCart = styled.button`
+  width: 50%;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  background: red;
+  color: var(--white);
+  border: none;
 
   justify-content: space-between;
 
@@ -106,7 +152,7 @@ export const BoxEmptyCart = styled.button`
   }
 
   @media (min-width: 768px) {
-    width: 20%;
+    width: 30%;
   }
 `;
 
@@ -115,6 +161,12 @@ export const ClosePage = styled(RiCloseCircleLine)`
   height: 30px;
 `;
 
+export const ConfirmBtn = styled(BsCartCheck)`
+  margin-left: 10px;
+`;
+
 export const DeleteBtn = styled(MdDelete)``;
 
-export const EmptyCart = styled(BsFillCartXFill)``;
+export const EmptyCart = styled(BsFillCartXFill)`
+  margin-left: 10px;
+`;

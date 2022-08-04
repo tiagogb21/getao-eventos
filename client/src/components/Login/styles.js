@@ -7,16 +7,16 @@ export const Container = styled.div`
   justify-content: space-around;
   align-items: center;
 
-  > span {
+  p {
+    text-align: center;
+  }
+
+  .spn-cad {
     font-weight: bolder;
   }
 
-  >span: hover {
+  p .spn-cad:hover {
     cursor: pointer;
-  }
-
-  > p {
-    text-align: center;
   }
 
   @media (min-width: 768px) {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 
 import { Container, GeneralInfo } from './styles';
+import { useNavigate } from 'react-router-dom';
 
 function Login({ setLogin }) {
   const [email, setEmail] = useState('');
@@ -11,6 +12,12 @@ function Login({ setLogin }) {
     if (a.target.checked) {
       localStorage.setItem('email', email);
     }
+  };
+
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    navigate('/');
   };
 
   const handleSubmit = async (e) => {
@@ -63,10 +70,15 @@ function Login({ setLogin }) {
             Manenha-me conectado
           </label>
           {/* Login */}
-          <button type="submit">Login</button>
+          <button type="submit" onClick={() => handleLogin()}>
+            Login
+          </button>
         </GeneralInfo>
         <p>
-          Não possui uma conta? <span onClick={() => setLogin(false)}>Cadastre-se</span>
+          Não possui uma conta?{' '}
+          <span className="spn-cad" onClick={() => setLogin(false)}>
+            Cadastre-se
+          </span>
         </p>
       </form>
     </Container>
