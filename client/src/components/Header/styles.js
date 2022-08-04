@@ -23,6 +23,11 @@ export const Container = styled.div`
     color: var(--gr-font);
   }
 
+  article {
+    width: 34%;
+    display: flex;
+  }
+
   .btn-cart {
     background: inherit;
     border: none;
@@ -34,11 +39,15 @@ export const Container = styled.div`
   }
 
   .btn-cart > span {
-    height: 20px;
-    width: 20px;
+    display: inline-block;
+    height: 15px;
+    width: 15px;
     background: var(--white);
     border-radius: 50%;
-    color: black;
+    color: var(--prp-bg);
+    position: relative;
+    bottom: 38px;
+    left: 10px;
   }
 
   @media (min-width: 768px) {
@@ -51,6 +60,15 @@ export const Container = styled.div`
       position: relative;
       bottom: 50px;
       left: -20px;
+    }
+
+    article {
+      justify-content: flex-end;
+    }
+
+    .btn-cart > span {
+      bottom: 23px;
+      left: -10px;
     }
   }
 `;
@@ -81,7 +99,6 @@ export const Head = styled.div`
     color: var(--prp-btn);
     opacity: 0.7;
     border-radius: 5px;
-    padding: 10px;
   }
 
   button:hover {
@@ -90,6 +107,8 @@ export const Head = styled.div`
   }
 
   @media (min-width: 768px) {
+    width: 93vw;
+
     h2 {
       font-size: 35px;
     }
@@ -102,4 +121,9 @@ export const Head = styled.div`
       width: 100px;
     }
   }
+`;
+
+export const CartIcon = styled(AiOutlineShoppingCart)`
+  width: 30px;
+  height: 30px;
 `;

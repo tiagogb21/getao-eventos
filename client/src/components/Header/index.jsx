@@ -37,7 +37,7 @@ function Header() {
           <button type="button" onClick={() => handleClick('/login')}>
             Login
           </button>
-          <button className="btn-cart" type="button">
+          <button className="btn-cart" type="button" onClick={() => handleClick('/cart')}>
             <CartIcon />
             <span>{shoppingCart.length}</span>
           </button>
