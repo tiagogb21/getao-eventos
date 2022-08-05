@@ -19,6 +19,19 @@ Tecnologias:
 
 ### FrontEnd:
 
+<details>
+  <summary>
+    <strong>Frontend estrutura:</strong>
+  </summary><br>
+  <ul>
+    <li>Events</li>
+    <li>EventsDetails</li>
+    <li>Home</li>
+    <li>MainLogin</li>
+    <li>ShoppingCart</li>
+  </ul>
+</details>
+
 ### Backend: Nodejs
 
 ![Diagrama de ER](./imgs/database.png)
@@ -27,9 +40,11 @@ Tecnologias:
   <summary>
     <strong>Backend estrutura:</strong>
   </summary><br>
-  Model
-  Service
-  Controller
-  Middleware
-  Route
+  <ul>
+  <li>Model</li>
+  <li>Service</li>
+  <li>Controller</li>
+  <li>Middleware</li>
+  <li>Route</li>
+  </ul>
 </details>
