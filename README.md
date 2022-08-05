@@ -20,3 +20,5 @@ Tecnologias:
 ### FrontEnd:
 
 ### Backend: Nodejs
+
+![Diagrama de ER](./imgs/database.png)
