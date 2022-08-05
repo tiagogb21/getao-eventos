@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react';
 import Axios from 'axios';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import MyContext from '../../MyContext';
 
 import {
@@ -21,6 +21,8 @@ function ShoppingCart() {
   const { shoppingCart, setShoppingCart } = useContext(MyContext);
 
   const [total, setTotal] = useState(0);
+
+  const navigate = useNavigate();
 
   const increaseQuantity = (name) => {
     const newQuantity = shoppingCart.map((item) => {
@@ -55,7 +57,6 @@ function ShoppingCart() {
   const deleteOne = (nome) => {
     const filterAndDelete = shoppingCart.filter((item) => item.nome !== nome);
     setShoppingCart(filterAndDelete);
-    calculateTotalPrice();
     return;
   };
 
@@ -69,7 +70,9 @@ function ShoppingCart() {
       };
 
       shoppingCart.map((item) =>
-        Axios.post('http://localhost:8080/pagamentos', item, headers).then((response) => {})
+        Axios.post('http://localhost:8080/pagamentos', item, headers).then(
+          (response) => response
+        )
       );
     } catch (error) {
       console.log('error = ' + error);
@@ -79,6 +82,17 @@ function ShoppingCart() {
 
   useEffect(() => {
     calculateTotalPrice();
+  }, [shoppingCart]);
+
+  useEffect(() => {
+    shoppingCart.length > 0 && localStorage.setItem('cart', JSON.stringify(shoppingCart));
+    const a =
+      shoppingCart.length > 0
+        ? shoppingCart
+        : localStorage.getItem('cart') !== null
+        ? JSON.parse(localStorage.getItem('cart'))
+        : [];
+    setShoppingCart(a);
   }, []);
 
   return (
@@ -103,6 +117,7 @@ function ShoppingCart() {
           </thead>
           <tbody>
             {shoppingCart !== undefined &&
+              shoppingCart !== null &&
               shoppingCart.map((item) => (
                 <tr>
                   <td>{item.nome}</td>
@@ -157,8 +172,11 @@ function ShoppingCart() {
               type="button"
               onClick={(e) => {
                 addProductToBack(e);
-                // setTotal(0);
-                // setShoppingCart([]);
+                alert('Compra realizada com sucesso!');
+                setTotal(0);
+                setShoppingCart([]);
+                localStorage.setItem('cart', JSON.stringify([]));
+                navigate('/');
               }}
             >
               confirmar

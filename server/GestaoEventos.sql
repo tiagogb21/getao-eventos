@@ -184,10 +184,12 @@ VALUES
 CREATE TABLE pagamentos
 (
 	id INT NOT NULL AUTO_INCREMENT,
-	qtd_ingresso INT NOT NULL,
+	nome VARCHAR(50) NOT NULL,
+  preco INT NOT NULL,
+  quantidade INT NOT NULL,
 	PRIMARY KEY(id)
 );
 
-INSERT INTO pagamentos (qtd_ingresso)
+INSERT INTO pagamentos (nome, preco, quantidade)
 
-VALUES (0);
+VALUES ('', 0, 0);

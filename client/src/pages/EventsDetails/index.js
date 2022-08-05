@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import MyContext from '../../MyContext';
@@ -6,25 +6,33 @@ import MyContext from '../../MyContext';
 import { Container, EventTargetBox } from './styles';
 
 function EventsDetails() {
-  const { eventTarget, setShoppingCart } = useContext(MyContext);
+  const { eventTarget, shoppingCart, setShoppingCart } = useContext(MyContext);
+  const [target, setTarget] = useState([]);
+
+  useEffect(() => {
+    const getDataFromLocal = JSON.parse(localStorage.getItem('eventTarget'));
+    const targetVerify = eventTarget.length > 0 || getDataFromLocal;
+    setTarget(targetVerify);
+    console.log(shoppingCart);
+  }, []);
 
   return (
     <Container>
       <Header />
-      {eventTarget !== undefined && (
+      {target !== undefined && target !== null && (
         <EventTargetBox>
-          <img src={eventTarget.imagem} alt="" />
+          <img src={target.imagem} alt="" />
           <article>
-            <h3>{eventTarget.nome}</h3>
+            <h3>{target.nome}</h3>
             <p>
-              <span>cidade</span>: {eventTarget.cidade}
+              <span>cidade</span>: {target.cidade}
             </p>
             <p>
-              <span>estado</span>: {eventTarget.estado}
+              <span>estado</span>: {target.estado}
             </p>
             <p>
               <span>preço</span>: R${' '}
-              {(+eventTarget.preco).toFixed(2).toLocaleString('pt-BR', {
+              {(+target.preco).toFixed(2).toLocaleString('pt-BR', {
                 style: 'currency',
                 currency: 'BRL'
               })}

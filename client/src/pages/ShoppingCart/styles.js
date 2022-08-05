@@ -92,6 +92,12 @@ export const BoxPostCart = styled.button`
   background: green;
   border-radius: 6px;
   font-size: 20px;
+  opacity: 0.7;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 1;
+  }
 `;
 
 export const BoxEmptyCart = styled.button`
@@ -102,6 +108,12 @@ export const BoxEmptyCart = styled.button`
   background: red;
   border-radius: 6px;
   font-size: 20px;
+  opacity: 0.7;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 1;
+  }
 `;
 
 export const ClosePage = styled(RiCloseCircleLine)`

@@ -30,9 +30,16 @@ function Eventos() {
       <h1>{event}</h1>
       <BoxContainer>
         {a !== undefined &&
+          a !== null &&
           a.map((evt) => (
             <BoxEvent key={evt.id} onClick={() => handleClick(evt.nome)}>
-              <button type="button" onClick={() => setEventTarget(evt)}>
+              <button
+                type="button"
+                onClick={() => {
+                  localStorage.setItem('eventTarget', JSON.stringify(evt));
+                  setEventTarget(evt);
+                }}
+              >
                 <p>
                   <span>{evt.nome}</span>
                 </p>
