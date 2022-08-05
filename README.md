@@ -9,12 +9,16 @@
 ## Objetivo:
 
 Criação de um aplicativo de gestão de eventos;
+O usuário deve fazer o login;
+Caso não tenha, deve fazer o cadastro;
 
 ## Tecnologias:
 
 <b>Frontend</b>: React/Context
 <br/>
 <b>Backend</b>: Node/Express
+
+## Informações Gerais:
 
 <details>
   <summary>
