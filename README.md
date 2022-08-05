@@ -72,7 +72,7 @@ Se o usuário clicar no botão de fechar, irá retornar para a página principal
 
 ![Login](./imgs/login.png) <br/>
 ![Cadastro](./imgs/cadastro.png) <br/>
-![Pagina Principal](./imgs/pg-princ.png) <br/>
+![Pagina Principal](./imgs/pg-principal1.png) <br/>
 ![Pagina Events](./imgs/events.png) <br/>
 ![Pagina Events Details](./imgs/events-details.png) <br/>
 ![Shopping Cart](./img/../imgs/shopping-cart1.png) <br/>
