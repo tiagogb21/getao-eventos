@@ -22,3 +22,14 @@ Tecnologias:
 ### Backend: Nodejs
 
 ![Diagrama de ER](./imgs/database.png)
+
+<details>
+  <summary>
+    <strong>Backend estrutura:</strong>
+  </summary><br>
+  Model
+  Service
+  Controller
+  Middleware
+  Route
+</details>
