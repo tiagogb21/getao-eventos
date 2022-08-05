@@ -21,16 +21,16 @@
 
 ## Objetivo:
 
-Criação de um aplicativo de gestão de eventos;
-O usuário deve fazer o login;
-Caso não tenha, deve fazer o cadastro;
-Ao entrar na página, deve escolher entre uma das 3 opções disponíveis;
-O usuário será direcionado para uma página com eventos da categoria escolhida.
-Ao escolher uma categoria será direcionado para uma página com mais detalhes da referida categoria.
-Nessa página irá encontrar um botão que irá permitir a compra do evento escolhido.
-Caso queira ir para o carrinho de compra, deve clicar no icone que se encontra na parte superior.
-Dentro da página de carrinho de compra, o usuário pode aumentar a quantidade de itens, excluir um item ou excluir todos os itens.
-Se o usuário clicar no botão de fechar, irá retornar para a página principal.
+Criação de um aplicativo de gestão de eventos; <br/>
+O usuário deve fazer o login; <br/>
+Caso não tenha, deve fazer o cadastro; <br/>
+Ao entrar na página, deve escolher entre uma das 3 opções disponíveis; <br/>
+O usuário será direcionado para uma página com eventos da categoria escolhida. <br/>
+Ao escolher uma categoria será direcionado para uma página com mais detalhes da referida categoria. <br/>
+Nessa página irá encontrar um botão que irá permitir a compra do evento escolhido. <br/>
+Caso queira ir para o carrinho de compra, deve clicar no icone que se encontra na parte superior. <br/>
+Dentro da página de carrinho de compra, o usuário pode aumentar a quantidade de itens, excluir um item ou excluir todos os itens. <br/>
+Se o usuário clicar no botão de fechar, irá retornar para a página principal. <br/>
 
 ## Tecnologias:
 
