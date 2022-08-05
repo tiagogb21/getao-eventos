@@ -5,160 +5,114 @@ import { MdDelete } from 'react-icons/md';
 import { RiCloseCircleLine } from 'react-icons/ri';
 
 export const Container = styled.div`
-  width: 100vw;
-  height: 60vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  article {
-    height: 20vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-    justify-content: space-between;
-  }
-
+  background: var(--wht-bg);
   @media (min-width: 768px) {
-    article {
-      flex-direction: row;
-      justify-content: space-around;
-    }
   }
 `;
 
 export const HeaderBox = styled.div`
-  width: 100vw;
-  height: 20%;
+  height: 15vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
-  background: purple;
+  background: var(--prp-bg);
+  color: white;
+  padding: 0 20px;
 
-  > h2 {
-    font-size: 24px;
-    font-weight: bolder;
-    color: white;
-  }
-
-  > a {
-    width: 50px;
-    height: 50px;
-    border: none;
-    background: inherit;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    color: white;
-  }
-
-  > a:hover {
-    cursor: pointer;
-    background: red;
+  h2 {
+    text-transform: uppercase;
   }
 `;
 
 export const SelectProducts = styled.div`
+  height: 80vh;
   width: 100vw;
-  height: 80%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
-  padding: 40px 0;
+  justify-content: space-around;
 
-  > table {
-    width: 90%;
-  }
-
-  > th,
-  td {
-    text-align: center;
+  table {
+    width: 90vw;
+    border: 1px solid black;
   }
 
   th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    background-color: #04aa6d;
-    color: white;
-  }
-
-  .dlt-btn {
-    background: blue;
-    color: white;
+    color: var(--white);
+    background: var(--prp-bg);
     width: 20%;
   }
 
-  .dlt-btn > button {
-    background: inherit;
+  th,
+  td {
+    padding-top: 5px;
+    height: 40px;
+    text-align: center;
+  }
+
+  .btn-qty {
+    background: var(--gr-font);
+    width: 30px;
+    height: 30px;
     border: none;
+    border-radius: 50%;
+    color: var(--white);
+    font-weight: bolder;
+    font-size: 15px;
   }
 
-  .dlt-btn:hover {
-    background: red;
+  .dlt-btn {
+    padding: 7px;
+    border: none;
+    border-radius: 5px;
+    background: var(--br-red);
+    color: var(--white);
   }
 
-  .p-ttl {
-    margin: 40px 0;
+  p {
+    color: var(--prp-btn);
+    border: 3px solid var(--prp-btn);
+    padding: 20px;
+    border-radius: 10px;
+    font-weight: bolder;
   }
+`;
 
-  .sp-qtd {
-    margin: 0 10px;
-  }
+export const BoxBtnCart = styled.div`
+  display: flex;
+  width: 60vw;
+  justify-content: space-around;
 `;
 
 export const BoxPostCart = styled.button`
-  width: 50%;
-  border: 1px solid black;
-  padding: 10px;
-  border-radius: 6px;
-  text-transform: uppercase;
-  background: green;
-  color: var(--white);
+  height: 10vh;
   border: none;
-
-  &:hover {
-    cursor: pointer;
-    color: white;
-    background: green;
-    border: 1px solid white;
-  }
-
-  @media (min-width: 768px) {
-    width: 30%;
-  }
+  width: 20vw;
+  color: white;
+  background: green;
+  border-radius: 6px;
+  font-size: 20px;
 `;
 
 export const BoxEmptyCart = styled.button`
-  width: 50%;
-  border: 1px solid black;
-  padding: 10px;
-  border-radius: 6px;
-  text-transform: uppercase;
-  background: red;
-  color: var(--white);
+  height: 10vh;
   border: none;
-
-  justify-content: space-between;
-
-  &:hover {
-    cursor: pointer;
-    color: white;
-    background: red;
-    border: 1px solid white;
-  }
-
-  @media (min-width: 768px) {
-    width: 30%;
-  }
+  width: 20vw;
+  color: white;
+  background: red;
+  border-radius: 6px;
+  font-size: 20px;
 `;
 
 export const ClosePage = styled(RiCloseCircleLine)`
   width: 30px;
   height: 30px;
+  color: var(--white);
+
+  &:hover {
+    background: red;
+    border-radius: 50%;
+  }
 `;
 
 export const ConfirmBtn = styled(BsCartCheck)`

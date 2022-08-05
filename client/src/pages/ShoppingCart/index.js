@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
-import { useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
+import Axios from 'axios';
 
 import { Link } from 'react-router-dom';
 import MyContext from '../../MyContext';
@@ -14,7 +13,8 @@ import {
   BoxEmptyCart,
   BoxPostCart,
   EmptyCart,
-  ConfirmBtn
+  ConfirmBtn,
+  BoxBtnCart
 } from './styles';
 
 function ShoppingCart() {
@@ -59,6 +59,24 @@ function ShoppingCart() {
     return;
   };
 
+  const addProductToBack = (e) => {
+    e.preventDefault();
+    try {
+      let headers = {
+        headers: {
+          Accept: 'application/json'
+        }
+      };
+
+      shoppingCart.map((item) =>
+        Axios.post('http://localhost:8080/pagamentos', item, headers).then((response) => {})
+      );
+    } catch (error) {
+      console.log('error = ' + error);
+      console.log(error.response.data.errors);
+    }
+  };
+
   useEffect(() => {
     calculateTotalPrice();
   }, []);
@@ -88,14 +106,27 @@ function ShoppingCart() {
               shoppingCart.map((item) => (
                 <tr>
                   <td>{item.nome}</td>
-                  <td>{item.preco}</td>
                   <td>
-                    <button onClick={() => decreaseQuantity(item.nome)}>-</button>
-                    <span className="sp-qtd"> {item.quantidade} </span>
-                    <button onClick={() => increaseQuantity(item.nome)}>+</button>
+                    {(+item.preco).toLocaleString('pt-BR', {
+                      style: 'currency',
+                      currency: 'BRL'
+                    })}
                   </td>
-                  <td className="dlt-btn">
-                    <button type="button" onClick={() => deleteOne(item.nome)}>
+                  <td>
+                    <button className="btn-qty" onClick={() => decreaseQuantity(item.nome)}>
+                      -
+                    </button>
+                    <span className="sp-qtd"> {item.quantidade} </span>
+                    <button className="btn-qty" onClick={() => increaseQuantity(item.nome)}>
+                      +
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      className="dlt-btn"
+                      type="button"
+                      onClick={() => deleteOne(item.nome)}
+                    >
                       <DeleteBtn /> delete
                     </button>
                   </td>
@@ -104,32 +135,36 @@ function ShoppingCart() {
           </tbody>
         </table>
         {/* Total */}
-        <p className="p-ttl">
+        <p>
           Total:
+          {` `}
           {total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
         </p>
         {/* Limpar Carrinho */}
         <article>
-          <BoxEmptyCart
-            type="button"
-            onClick={() => {
-              setTotal(0);
-              setShoppingCart([]);
-            }}
-          >
-            Limpar Carrinho
-            <EmptyCart />
-          </BoxEmptyCart>
-          <BoxPostCart
-            type="button"
-            onClick={() => {
-              setTotal(0);
-              setShoppingCart([]);
-            }}
-          >
-            confirmar
-            <ConfirmBtn />
-          </BoxPostCart>
+          <BoxBtnCart>
+            <BoxEmptyCart
+              type="button"
+              onClick={() => {
+                setTotal(0);
+                setShoppingCart([]);
+              }}
+            >
+              Limpar Carrinho
+              <EmptyCart />
+            </BoxEmptyCart>
+            <BoxPostCart
+              type="button"
+              onClick={(e) => {
+                addProductToBack(e);
+                // setTotal(0);
+                // setShoppingCart([]);
+              }}
+            >
+              confirmar
+              <ConfirmBtn />
+            </BoxPostCart>
+          </BoxBtnCart>
         </article>
       </SelectProducts>
       {/* Finalizar Compra */}

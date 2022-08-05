@@ -17,7 +17,17 @@ function Login({ setLogin }) {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    navigate('/');
+    let headers = {
+      headers: {
+        Accept: 'application/json'
+      }
+    };
+    Axios.get('http://localhost:8080/users', headers).then(({ data }) => {
+      const t = data.find((item) => item.user_email === email);
+      if (t !== undefined && t.user_password === password) {
+        navigate('/');
+      }
+    });
   };
 
   const handleSubmit = async (e) => {

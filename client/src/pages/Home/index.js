@@ -38,6 +38,7 @@ function Home() {
   const handleClick = (name) => {
     setEvent(name);
     getEventsInfo(name);
+    localStorage.setItem('evento', name);
     navigate(`/events/${name}`);
   };
 

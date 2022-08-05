@@ -1,30 +1,29 @@
-const EventosView = require("../views/eventos.view");
+const EventosService = require('../service/eventos.service');
 
 const getAll = async (req, res) => {
   try {
-    const eventos = await EventosView.getAll();
+    const eventos = await EventosService.getAll();
     return res.status(200).json(eventos);
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    return res.status(error.status || 500).json({ message: error.message });
   }
 };
 
 const getById = async (req, res) => {
   try {
     const { id } = req.params;
-    const evento = await EventosView.getById(id);
-    if (evento.length === 0)
-      return res.status(404).json({ message: "Event not found!" });
+    const evento = await EventosService.getById(id);
+    if (evento.length === 0) return res.status(400).json({ message: 'Event not found!' });
     return res.status(200).json(evento);
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    return res.status(error.status || 500).json({ message: error.message });
   }
 };
 
 const createEvento = async (req, res) => {
   try {
     const { cidade, estado, evento, tipo, turno, preco } = req.body;
-    const eventos = await EventosView.createEvento(
+    const eventos = await EventosService.createEvento(
       cidade,
       estado,
       evento,
@@ -32,9 +31,9 @@ const createEvento = async (req, res) => {
       turno,
       preco
     );
-    return res.status(200).json(eventos);
+    return res.status(201).json(eventos);
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    return res.status(error.status || 500).json({ message: error.message });
   }
 };
 
@@ -42,7 +41,7 @@ const updateEvento = async (req, res) => {
   try {
     const { id } = req.params;
     const { cidade, estado, evento, tipo, turno, preco } = req.body;
-    const eventoUpdate = await EventosView.updateEvento(
+    const eventoUpdate = await EventosService.updateEvento(
       id,
       cidade,
       estado,
@@ -52,22 +51,21 @@ const updateEvento = async (req, res) => {
       preco
     );
     if (eventoUpdate.length === 0)
-      return res.status(404).json({ message: "Event not found!" });
-    return res.status(200).json({ message: "Updated event!" });
+      return res.status(400).json({ message: 'Event not found!' });
+    return res.status(200).json({ message: 'Updated event!' });
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    return res.status(error.status || 500).json({ message: error.message });
   }
 };
 
 const deleteEvento = async (req, res) => {
   try {
     const { id } = req.params;
-    const evento = await EventosView.deleteEvento(id);
-    if (evento.length === 0)
-      return res.status(404).json({ message: "Event not found!" });
-    return res.status(200).json({ message: "Deleted event!" });
+    const evento = await EventosService.deleteEvento(id);
+    if (evento.length === 0) return res.status(400).json({ message: 'Event not found!' });
+    return res.status(200).json({ message: 'Deleted event!' });
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    return res.status(error.status || 500).json({ message: error.message });
   }
 };
 

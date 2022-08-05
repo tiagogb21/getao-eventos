@@ -29,6 +29,7 @@ function MyProvider({ children }) {
         const getData = response.data;
         const eventosFilter = getData.filter((item) => item.tipo === name);
         setEventsInfoStore(eventosFilter);
+        localStorage.setItem('eventos', JSON.stringify(eventosFilter));
         return setEventsInfo(eventosFilter);
       });
     } catch (error) {
@@ -45,6 +46,7 @@ function MyProvider({ children }) {
     eventTarget,
     setEventTarget,
     setEventsInfo,
+    setEventsInfoStore,
     filterByEvents,
     shoppingCart,
     setShoppingCart

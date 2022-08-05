@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import city from '../../assets/city.jpg';
 
 export const Container = styled.div`
   width: 100vw;
@@ -8,7 +7,7 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(145deg, var(--prp-btn), blue);
+  background-image: linear-gradient(145deg, var(--prp-btn), black);
 `;
 
 export const Main = styled.div`

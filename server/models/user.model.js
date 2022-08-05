@@ -3,12 +3,7 @@ const connection = require('./connection');
 const getAll = async () => {
   const query = 'SELECT * FROM GestaoEventos.users';
   const [users] = await connection.execute(query);
-  const user = users.reduce((acc, curr) => {
-    const { user_password, ...userWithoutPass } = curr;
-    acc.push(userWithoutPass);
-    return acc;
-  }, []);
-  return user;
+  return users;
 };
 
 const getById = async (id) => {

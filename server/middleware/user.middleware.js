@@ -10,34 +10,27 @@ function validateEmail(email) {
 // (?=.{8,})	The string must be eight characters or longer
 
 function validatePassword(password) {
-  const strongRegex = new RegExp(
-    "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
-  );
-  return strongRegex.test(password);
+  return password.length >= 6;
 }
 
 const verifyFullName = (req, res, next) => {
   const { full_name } = req.body;
-  if (!full_name)
-    return res.status(401).json({ message: "Full Name required!" });
+  if (!full_name) return res.status(401).json({ message: 'Full Name required!' });
   next();
 };
 
 const verifyEmail = (req, res, next) => {
   const { user_email } = req.body;
-  if (!user_email)
-    return res.status(401).json({ message: "Email is required!" });
-  if (!validateEmail(user_email))
-    return res.status(401).json({ message: "Invalid email" });
+  if (!user_email) return res.status(401).json({ message: 'Email is required!' });
+  if (!validateEmail(user_email)) return res.status(401).json({ message: 'Invalid email' });
   next();
 };
 
 const verifyPassword = (req, res, next) => {
   const { user_password } = req.body;
-  if (!user_password)
-    return res.status(401).json({ message: "Password is required!" });
+  if (!user_password) return res.status(401).json({ message: 'Password is required!' });
   if (!validatePassword(user_password))
-    return res.status(401).json({ message: "Invalid password" });
+    return res.status(401).json({ message: 'Invalid password' });
   next();
 };
 

@@ -34,9 +34,11 @@ function Cadastro({ setLogin }) {
       });
 
       !isUserRegistered
-        ? Axios.post('http://localhost:8080/users', data, headers).then(
-            (response) => response
-          )
+        ? Axios.post('http://localhost:8080/users', data, headers).then((response) => {
+            if (response.status === 201) {
+              setLogin(true);
+            }
+          })
         : setVerifyUserRegister('E-mail já está cadastrado!');
     } catch (error) {
       console.log('error = ' + error);
@@ -46,7 +48,7 @@ function Cadastro({ setLogin }) {
 
   useEffect(() => {
     Axios.get('http://localhost:8080/users').then((response) => setUsers(response));
-  });
+  }, []);
 
   return (
     <Container>
@@ -90,7 +92,16 @@ function Cadastro({ setLogin }) {
           <p>
             Ao me cadastrar concordo com os <span>Termos de Uso</span>
           </p>
-          <button type="submit">cadastrar</button>
+          <button
+            type="submit"
+            onClick={() => {
+              if (password.length < 6) {
+                alert('A senha deve conter mais de 6 caracteres!');
+              }
+            }}
+          >
+            cadastrar
+          </button>
         </GeneralInfo>
         <p>
           Já possui uma conta? <span onClick={() => setLogin(true)}>Faça Login</span>
