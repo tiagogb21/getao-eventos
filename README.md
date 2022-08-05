@@ -6,6 +6,17 @@ Objetivo: Criação de um aplicativo de gestão de eventos;
 
 Tecnologias:
 
-FrontEnd: React
+<details>
+  <summary>
+    <strong>🗓 Data de Entrega</strong>
+  </summary><br>
+  
+  - Este projeto é individual;
+  - Serão `7 dias de projeto;
+  - Data de entrega para avaliação final do projeto: `03/08/2022 15:00`.
 
-Backend: Nodejs
+</details>
+
+### FrontEnd:
+
+### Backend: Nodejs
