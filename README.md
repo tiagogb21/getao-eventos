@@ -69,3 +69,10 @@ Se o usuário clicar no botão de fechar, irá retornar para a página principal
   <li>Route</li>
   </ul>
 </details>
+
+![Login](./imgs/login.png) <br/>
+![Cadastro](./imgs/cadastro.png) <br/>
+![Pagina Principal](./imgs/pg-princ.png) <br/>
+![Pagina Events](./imgs/events.png) <br/>
+![Pagina Events Details](./imgs/events-details.png) <br/>
+![Shopping Cart](./imgs/shopping-cart.png) <br/>
