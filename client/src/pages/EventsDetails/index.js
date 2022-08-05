@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import MyContext from '../../MyContext';
@@ -8,6 +9,8 @@ import { Container, EventTargetBox } from './styles';
 function EventsDetails() {
   const { eventTarget, shoppingCart, setShoppingCart } = useContext(MyContext);
   const [target, setTarget] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getDataFromLocal = JSON.parse(localStorage.getItem('eventTarget'));
@@ -62,6 +65,7 @@ function EventsDetails() {
                       return acc;
                     }, []);
                   }
+                  navigate(`/events/${eventTarget.nome.split(' ')[0]}`);
                   return prevState;
                 });
               }}
