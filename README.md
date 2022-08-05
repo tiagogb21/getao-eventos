@@ -1,10 +1,20 @@
-Front: npm install
+## As dependências devem ser instaladas:
 
-Back: npm install
+<b>Root</b>: npm install
 
-Objetivo: Criação de um aplicativo de gestão de eventos;
+<b>Front</b>: npm install
 
-Tecnologias:
+<b>Back</b>: npm install
+
+## Objetivo:
+
+Criação de um aplicativo de gestão de eventos;
+
+## Tecnologias:
+
+<b>Frontend</b>: React/Context
+<br/>
+<b>Backend</b>: Node/Express
 
 <details>
   <summary>
